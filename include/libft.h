@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaida <lgaida@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: lgaida <lgaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 19:04:03 by lgaida            #+#    #+#             */
-/*   Updated: 2025/06/03 18:08:16 by lgaida           ###   ########.fr       */
+/*   Updated: 2025/09/29 19:12:52 by lgaida           ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #ifndef LIBFT_H
 # define LIBFT_H
@@ -49,5 +49,19 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
+
+// ft_printf
+
+# include <stdarg.h>
+
+int	ft_printf(const char *str, ...);
+int	ft_handle_args(char spec, va_list *args);
+int	ft_print_char(va_list *args);
+int	ft_print_str(va_list *args);
+int	ft_print_addr(va_list *args);
+int	ft_print_int(va_list *args);
+int	ft_print_uint(va_list *args);
+int	ft_print_lowhex(va_list *args);
+int	ft_print_uphex(va_list *args);
 
 #endif
