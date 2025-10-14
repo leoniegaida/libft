@@ -1,42 +1,67 @@
 NAME = libft.a
 
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 SRC_DIR = src
+PRF_DIR = ft_printf
+GNL_DIR = get_next_line
 OBJ_DIR = obj
 INC_DIR = include
 
 SRC = \
-	$(SRC_DIR)/ft_atoi.c $(SRC_DIR)/ft_bzero.c $(SRC_DIR)/ft_calloc.c $(SRC_DIR)/ft_isalnum.c $(SRC_DIR)/ft_isalpha.c $(SRC_DIR)/ft_isascii.c \
-	$(SRC_DIR)/ft_isdigit.c $(SRC_DIR)/ft_isprint.c $(SRC_DIR)/ft_itoa.c $(SRC_DIR)/ft_memchr.c $(SRC_DIR)/ft_memcmp.c $(SRC_DIR)/ft_memcpy.c \
-	$(SRC_DIR)/ft_memmove.c $(SRC_DIR)/ft_memset.c $(SRC_DIR)/ft_putchar_fd.c $(SRC_DIR)/ft_putendl_fd.c $(SRC_DIR)/ft_putnbr_fd.c \
-	$(SRC_DIR)/ft_putstr_fd.c $(SRC_DIR)/ft_split.c $(SRC_DIR)/ft_strchr.c $(SRC_DIR)/ft_strdup.c $(SRC_DIR)/ft_striteri.c \
-	$(SRC_DIR)/ft_strjoin.c $(SRC_DIR)/ft_strlcat.c $(SRC_DIR)/ft_strlcpy.c $(SRC_DIR)/ft_strlen.c $(SRC_DIR)/ft_strmapi.c \
-	$(SRC_DIR)/ft_strncmp.c $(SRC_DIR)/ft_strnstr.c $(SRC_DIR)/ft_strrchr.c $(SRC_DIR)/ft_strtrim.c $(SRC_DIR)/ft_substr.c \
+	$(SRC_DIR)/ft_atoi.c $(SRC_DIR)/ft_bzero.c $(SRC_DIR)/ft_calloc.c \
+	$(SRC_DIR)/ft_isalnum.c $(SRC_DIR)/ft_isalpha.c $(SRC_DIR)/ft_isascii.c \
+	$(SRC_DIR)/ft_isdigit.c $(SRC_DIR)/ft_isprint.c $(SRC_DIR)/ft_itoa.c \
+	$(SRC_DIR)/ft_memchr.c $(SRC_DIR)/ft_memcmp.c $(SRC_DIR)/ft_memcpy.c \
+	$(SRC_DIR)/ft_memmove.c $(SRC_DIR)/ft_memset.c $(SRC_DIR)/ft_putchar_fd.c \
+	$(SRC_DIR)/ft_putendl_fd.c $(SRC_DIR)/ft_putnbr_fd.c \
+	$(SRC_DIR)/ft_putstr_fd.c $(SRC_DIR)/ft_split.c $(SRC_DIR)/ft_strchr.c \
+	$(SRC_DIR)/ft_strdup.c $(SRC_DIR)/ft_striteri.c $(SRC_DIR)/ft_strjoin.c \
+	$(SRC_DIR)/ft_strlcat.c $(SRC_DIR)/ft_strlcpy.c $(SRC_DIR)/ft_strlen.c \
+	$(SRC_DIR)/ft_strmapi.c $(SRC_DIR)/ft_strncmp.c $(SRC_DIR)/ft_strnstr.c \
+	$(SRC_DIR)/ft_strrchr.c $(SRC_DIR)/ft_strtrim.c $(SRC_DIR)/ft_substr.c \
 	$(SRC_DIR)/ft_tolower.c $(SRC_DIR)/ft_toupper.c \
 	\
-	$(SRC_DIR)/ft_printf/ft_handle_args.c $(SRC_DIR)/ft_printf/ft_print_addr.c $(SRC_DIR)/ft_printf/ft_print_char.c \
-	$(SRC_DIR)/ft_printf/ft_print_int_uint.c $(SRC_DIR)/ft_printf/ft_print_lowhex_uphex.c \
-	$(SRC_DIR)/ft_printf/ft_print_str.c $(SRC_DIR)/ft_printf/ft_printf.c
+	$(SRC_DIR)/$(PRF_DIR)/ft_handle_args.c \
+	$(SRC_DIR)/$(PRF_DIR)/ft_print_addr.c \
+	$(SRC_DIR)/$(PRF_DIR)/ft_print_char.c \
+	$(SRC_DIR)/$(PRF_DIR)/ft_print_int_uint.c \
+	$(SRC_DIR)/$(PRF_DIR)/ft_print_lowhex_uphex.c \
+	$(SRC_DIR)/$(PRF_DIR)/ft_print_str.c \
+	$(SRC_DIR)/$(PRF_DIR)/ft_printf.c \
+	\
+	$(SRC_DIR)/$(GNL_DIR)/get_next_line.c \
+	$(SRC_DIR)/$(GNL_DIR)/get_next_line_utils.c
 
-OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o) 
+OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -I $(INC_DIR) -c $< -o $@
+	@$(CC) $(CFLAGS) -I $(INC_DIR) -c $< -o $@
 
 $(NAME): $(OBJ)
-	ar crs $@ $^
+	@ar crs $@ $^
+	@echo "$(GREEN)$(NAME) successfully built!$(RESET)"
 
-all: $(NAME)
+all: 
+	@$(MAKE) $(NAME)
 
 clean:
-	rm -rf $(OBJ_DIR)
+	@rm -rf $(OBJ_DIR)
+	@echo "$(RED)$(NAME) object files removed.$(RESET)"
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "$(RED)$(NAME) full clean complete.$(RESET)"
 
-re: fclean all
+re: 
+	@$(MAKE) fclean
+	@$(MAKE) all
 
 .PHONY: all clean fclean re
+
+MAKEFLAGS += -s
+
+GREEN = \033[1;32m
+RED = \033[1;31m

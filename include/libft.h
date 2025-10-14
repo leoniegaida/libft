@@ -13,7 +13,14 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <stddef.h>
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+# include <stdarg.h>
+# include <fcntl.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 int		ft_atoi(const char *nptr);
 void	ft_bzero(void *s, size_t n);
@@ -51,9 +58,6 @@ int		ft_tolower(int c);
 int		ft_toupper(int c);
 
 // ft_printf
-
-# include <stdarg.h>
-
 int	ft_printf(const char *str, ...);
 int	ft_handle_args(char spec, va_list *args);
 int	ft_print_char(va_list *args);
@@ -63,5 +67,15 @@ int	ft_print_int(va_list *args);
 int	ft_print_uint(va_list *args);
 int	ft_print_lowhex(va_list *args);
 int	ft_print_uphex(va_list *args);
+
+// get_next_line
+char	*get_next_line(int fd);
+void	read_from_fd(int fd, char **stash, int *panic_button);
+void	extract_line(char **stash, char **line, int *panic_button);
+char	*ft_gnl_strdup(char *str, int *panic_button);
+int		ft_gnl_strchr(char *str, char c);
+char	*ft_gnl_strjoin(char *str1, char *str2, int *panic_button);
+char	*ft_gnl_memcpy(char *dest, char *src, int len);
+char	*ft_gnl_substr(char *str, char start, char end, int *panic_button);
 
 #endif
