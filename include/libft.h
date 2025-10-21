@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaida <lgaida@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lgaida <lgaida@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/30 19:04:03 by lgaida            #+#    #+#             */
-/*   Updated: 2025/10/21 20:26:19 by lgaida           ###   ########.fr       */
+/*   Created: 2025/10/21 20:53:33 by lgaida            #+#    #+#             */
+/*   Updated: 2025/10/21 20:54:02 by lgaida           ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
@@ -59,15 +59,15 @@ int		ft_tolower(int c);
 int		ft_toupper(int c);
 
 // ft_printf
-int	ft_printf(const char *str, ...);
-int	ft_handle_args(char spec, va_list *args);
-int	ft_print_char(va_list *args);
-int	ft_print_str(va_list *args);
-int	ft_print_addr(va_list *args);
-int	ft_print_int(va_list *args);
-int	ft_print_uint(va_list *args);
-int	ft_print_lowhex(va_list *args);
-int	ft_print_uphex(va_list *args);
+int		ft_printf(const char *str, ...);
+int		ft_handle_args(char spec, va_list *args);
+int		ft_print_char(va_list *args);
+int		ft_print_str(va_list *args);
+int		ft_print_addr(va_list *args);
+int		ft_print_int(va_list *args);
+int		ft_print_uint(va_list *args);
+int		ft_print_lowhex(va_list *args);
+int		ft_print_uphex(va_list *args);
 
 // get_next_line
 char	*get_next_line(int fd);
@@ -78,7 +78,7 @@ char	*gnl_strjoin(char *str1, char *str2, int *panic_button);
 char	*gnl_substr(char *str, char start, char end, int *panic_button);
 
 // add-ons
-int	ft_atoi_base(char *str, char *base);
-int	ft_iofc(char *str, char c);
+int		ft_atoi_base(char *str, char *base);
+int		ft_iofc(char *str, char c);
 
 #endif
