@@ -32,7 +32,9 @@ SRC = \
 	$(SRC_DIR)/$(PRF_DIR)/ft_printf.c \
 	\
 	$(SRC_DIR)/$(GNL_DIR)/get_next_line.c \
-	$(SRC_DIR)/$(GNL_DIR)/get_next_line_utils.c
+	$(SRC_DIR)/$(GNL_DIR)/get_next_line_utils.c \
+	\
+	$(SRC_DIR)/ft_atoi_base.c $(SRC_DIR)/ft_iofc.c
 
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
@@ -42,18 +44,18 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 
 $(NAME): $(OBJ)
 	@ar crs $@ $^
-	@echo "$(GREEN)$(NAME) successfully built!$(RESET)"
+	@echo "$(NAME) successfully built!"
 
 all: 
 	@$(MAKE) $(NAME)
 
 clean:
 	@rm -rf $(OBJ_DIR)
-	@echo "$(RED)$(NAME) object files removed.$(RESET)"
+	@echo "$(NAME) object files removed."
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "$(RED)$(NAME) full clean complete.$(RESET)"
+	@echo "$(NAME) full clean complete."
 
 re: 
 	@$(MAKE) fclean
@@ -62,6 +64,3 @@ re:
 .PHONY: all clean fclean re
 
 MAKEFLAGS += -s
-
-GREEN = \033[1;32m
-RED = \033[1;31m

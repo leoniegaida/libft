@@ -6,7 +6,7 @@
 /*   By: lgaida <lgaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 19:04:03 by lgaida            #+#    #+#             */
-/*   Updated: 2025/09/29 19:12:52 by lgaida           ###   ########.fr       */
+/*   Updated: 2025/10/21 20:26:19 by lgaida           ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -22,6 +22,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+// OG libft
 int		ft_atoi(const char *nptr);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
@@ -72,10 +73,12 @@ int	ft_print_uphex(va_list *args);
 char	*get_next_line(int fd);
 void	read_from_fd(int fd, char **stash, int *panic_button);
 void	extract_line(char **stash, char **line, int *panic_button);
-char	*ft_gnl_strdup(char *str, int *panic_button);
-int		ft_gnl_strchr(char *str, char c);
-char	*ft_gnl_strjoin(char *str1, char *str2, int *panic_button);
-char	*ft_gnl_memcpy(char *dest, char *src, int len);
-char	*ft_gnl_substr(char *str, char start, char end, int *panic_button);
+char	*gnl_strdup(char *str, int *panic_button);
+char	*gnl_strjoin(char *str1, char *str2, int *panic_button);
+char	*gnl_substr(char *str, char start, char end, int *panic_button);
+
+// add-ons
+int	ft_atoi_base(char *str, char *base);
+int	ft_iofc(char *str, char c);
 
 #endif
