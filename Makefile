@@ -34,7 +34,7 @@ SRC = \
 	$(SRC_DIR)/$(GNL_DIR)/get_next_line.c \
 	$(SRC_DIR)/$(GNL_DIR)/get_next_line_utils.c \
 	\
-	$(SRC_DIR)/ft_atoi_base.c $(SRC_DIR)/ft_iofc.c
+	$(SRC_DIR)/ft_atoi_base.c $(SRC_DIR)/ft_iofc.c $(SRC_DIR)/ft_count_entries.c
 
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 

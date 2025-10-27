@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaida <lgaida@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: lgaida <lgaida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 20:53:33 by lgaida            #+#    #+#             */
-/*   Updated: 2025/10/21 20:54:02 by lgaida           ###   ########.fr       */
+/*   Updated: 2025/10/22 17:28:06 by lgaida           ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #ifndef LIBFT_H
 # define LIBFT_H
@@ -80,5 +80,6 @@ char	*gnl_substr(char *str, char start, char end, int *panic_button);
 // add-ons
 int		ft_atoi_base(char *str, char *base);
 int		ft_iofc(char *str, char c);
+size_t	ft_count_entries(char const *s, char c);
 
 #endif
