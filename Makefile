@@ -3,11 +3,12 @@ NAME = libft.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRC_DIR = src
-PRF_DIR = ft_printf
-GNL_DIR = get_next_line
-OBJ_DIR = obj
 INC_DIR = include
+SRC_DIR = src
+PRF_DIR = $(SRC_DIR)/ft_printf
+GNL_DIR = $(SRC_DIR)/get_next_line
+BON_DIR = $(SRC_DIR)/bonus
+OBJ_DIR = obj
 
 SRC = \
 	$(SRC_DIR)/ft_atoi.c $(SRC_DIR)/ft_bzero.c $(SRC_DIR)/ft_calloc.c \
@@ -23,20 +24,28 @@ SRC = \
 	$(SRC_DIR)/ft_strrchr.c $(SRC_DIR)/ft_strtrim.c $(SRC_DIR)/ft_substr.c \
 	$(SRC_DIR)/ft_tolower.c $(SRC_DIR)/ft_toupper.c \
 	\
-	$(SRC_DIR)/$(PRF_DIR)/ft_handle_args.c \
-	$(SRC_DIR)/$(PRF_DIR)/ft_print_addr.c \
-	$(SRC_DIR)/$(PRF_DIR)/ft_print_char.c \
-	$(SRC_DIR)/$(PRF_DIR)/ft_print_int_uint.c \
-	$(SRC_DIR)/$(PRF_DIR)/ft_print_lowhex_uphex.c \
-	$(SRC_DIR)/$(PRF_DIR)/ft_print_str.c \
-	$(SRC_DIR)/$(PRF_DIR)/ft_printf.c \
+	$(PRF_DIR)/ft_handle_args.c \
+	$(PRF_DIR)/ft_print_addr.c \
+	$(PRF_DIR)/ft_print_char.c \
+	$(PRF_DIR)/ft_print_int_uint.c \
+	$(PRF_DIR)/ft_print_lowhex_uphex.c \
+	$(PRF_DIR)/ft_print_str.c \
+	$(PRF_DIR)/ft_printf.c \
 	\
-	$(SRC_DIR)/$(GNL_DIR)/get_next_line.c \
-	$(SRC_DIR)/$(GNL_DIR)/get_next_line_utils.c \
+	$(GNL_DIR)/get_next_line.c \
+	$(GNL_DIR)/get_next_line_utils.c \
 	\
 	$(SRC_DIR)/ft_atoi_base.c $(SRC_DIR)/ft_iofc.c $(SRC_DIR)/ft_count_entries.c
 
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+
+BONUS = \
+	$(BON_DIR)/ft_lstadd_back.c $(BON_DIR)/ft_lstadd_front.c \
+	$(BON_DIR)/ft_lstclear.c $(BON_DIR)/ft_lstdelone.c $(BON_DIR)/ft_lstiter.c \
+	$(BON_DIR)/ft_lstlast.c $(BON_DIR)/ft_lstmap.c $(BON_DIR)/ft_lstnew.c \
+	$(BON_DIR)/ft_lstsize.c
+
+BONUS_OBJ = $(BONUS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
@@ -48,6 +57,10 @@ $(NAME): $(OBJ)
 
 all: 
 	@$(MAKE) $(NAME)
+
+bonus: $(OBJ) $(BONUS_OBJ)
+	@ar crs $(NAME) $^
+	@echo "$(NAME) with bonus successfully built!"
 
 clean:
 	@rm -rf $(OBJ_DIR)
@@ -61,6 +74,6 @@ re:
 	@$(MAKE) fclean
 	@$(MAKE) all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
 
 MAKEFLAGS += -s
